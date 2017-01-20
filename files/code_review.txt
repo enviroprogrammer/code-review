@@ -1,0 +1,52 @@
+You have the right idea for FileNode and your overall coding style is good.
+Great job on avoiding the use of abbreviations as instance and static variable
+names and method names. Each variable name is a noun phrase, and each method
+name is a verb phrase, which is correct. As well, excellent boolean expressions; 
+they do not compare to true or false. However, the documentation and
+design need improvement.
+
+Style:
+- Some variable names used pothole case. Variable names should be in camel case
+instead of pothole case as per Java's naming conventions (with the exception of 
+constants; these should also be in all caps). This can be seen on lines 23, 64, 
+71, and 74. 
+- Remember to use the Eclipse Format command (Command+Shift+F for Mac, 
+Control+Shift+F for Windows/Linux) to make your code more readable.
+- The variable name "name" may be a better alternative for "nom" on line 17, as 
+it is more descriptive and meaningful.
+- The getter and setter names for the variable nom are inconsistent, as seen
+on lines 89 and 99 respectively. You may want to change setName to setNom,
+or change nom to name and then change the getter's name to getName.
+- Since the variable on line 29 is a constant, use capital letters.
+
+Documentation:
+- The methods findFileExtension and buildTree are missing @param and @return
+tags. findFileExtension is also missing a @throws tag to indicate that there
+is a checked exception.
+- buildTreeWithImages and openInFinder are missing Javadocs. 
+- The Javadoc for findImagesWithTag is incorrect, as it describes the main
+method. Note that there is no need to document main methods; only document
+static and instance methods.
+- Too many internal comments inside findFileExtension. For example, the comments
+at lines 179-182 and 187 are not necessary, so it may be a good idea to
+remove them. As well, the comments between 203-207 could be shortened
+by providing a brief explanation of what the code at line 202 does.
+- The internal comments on lines 248 and 263 are redundant, as they mean
+the same thing as the comments in lines 246 and 261 respectively. 
+- What was the reasoning behind the comments in lines 239 and 240? If you
+do not need those comments, feel free to remove them.
+
+Design:
+- What was the reasoning behind making actual_file protected instead of 
+private? You may want to think about this.
+- Too many if-else statements in buildTreeWithImages, causing the method body
+to exceed 20 lines. You may want to refactor your implementation to make it
+more cleaner. One way is to extract methods. For example, you could 
+extract a method from lines 230-243 that is solely responsible for checking 
+whether a file is an image. You could extract another method from lines 245-276 
+that could build nodes representing all sorts of files, image or not. That way,
+you can have buildTreeWithImages focus on only one thing, which is building the
+list of images (i.e. the tree of PhotoNodes), while using helper methods.
+- A buildTree method may not be necessary, as it builds a tree of all files
+existing within a directory. Just having buildTreeWithImages is sufficient 
+since one of the A3 requirements was to list all images inside a directory.
